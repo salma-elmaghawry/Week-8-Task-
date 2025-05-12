@@ -22,8 +22,12 @@ class _MainNavigationScreenState extends State<MainNavigationScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: _screens[_currentIndex],
+      body: IndexedStack(index: _currentIndex, children: _screens),
       bottomNavigationBar: BottomNavigationBar(
+        type: BottomNavigationBarType.fixed,
+        selectedItemColor: Colors.deepPurple,
+        unselectedItemColor: Colors.grey,
+        showUnselectedLabels: true,
         currentIndex: _currentIndex,
         onTap: (index) {
           setState(() {
@@ -31,41 +35,11 @@ class _MainNavigationScreenState extends State<MainNavigationScreen> {
           });
         },
         items: const [
-          BottomNavigationBarItem(icon: Icon(Icons.calculate)),
-          BottomNavigationBarItem(icon: Icon(Icons.image)),
-          BottomNavigationBarItem(icon: Icon(Icons.note)),
+          BottomNavigationBarItem(icon: Icon(Icons.calculate), label: 'BMI'),
+          BottomNavigationBarItem(icon: Icon(Icons.image), label: 'Gallery'),
+          BottomNavigationBarItem(icon: Icon(Icons.note), label: 'Notes'),
         ],
       ),
-    );
-  }
-}
-
-class CustomBottomNavigationBarItem extends StatelessWidget {
-  const CustomBottomNavigationBarItem({super.key, required this.icon});
-  final Icon icon;
-
-  @override
-  Widget build(BuildContext context) {
-    return IconButton(
-      icon: icon,
-      onPressed: () {
-        if (icon.icon == Icons.calculate) {
-          Navigator.push(
-            context,
-            MaterialPageRoute(builder: (context) => const BmiScreen()),
-          );
-        } else if (icon.icon == Icons.image) {
-          Navigator.push(
-            context,
-            MaterialPageRoute(builder: (context) => const GalleryScreen()),
-          );
-        } else if (icon.icon == Icons.note) {
-          Navigator.push(
-            context,
-            MaterialPageRoute(builder: (context) => const NotesScreen()),
-          );
-        }
-      },
     );
   }
 }
