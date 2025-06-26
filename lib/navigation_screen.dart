@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:week8/core/app_colors.dart';
 import 'package:week8/feature/BMI/presentation/bmi_calculator_screen.dart';
 import 'package:week8/feature/Gallery/gallery_screen.dart';
-import 'package:week8/feature/Notes/notes_screen.dart';
+import 'package:week8/feature/ToDO/presentation/todo_screen.dart';
 
 class MainNavigationScreen extends StatefulWidget {
   const MainNavigationScreen({super.key});
@@ -17,7 +17,7 @@ class _MainNavigationScreenState extends State<MainNavigationScreen> {
   final List<Widget> _screens = [
     BmiCalculatorScreen(),
     GalleryScreen(),
-    NotesScreen(),
+    TodoScreen(),
   ];
 
   @override
@@ -44,7 +44,7 @@ class _MainNavigationScreenState extends State<MainNavigationScreen> {
         items: const [
           BottomNavigationBarItem(icon: Icon(Icons.calculate), label: 'BMI'),
           BottomNavigationBarItem(icon: Icon(Icons.image), label: 'Gallery'),
-          BottomNavigationBarItem(icon: Icon(Icons.note), label: 'Notes'),
+          BottomNavigationBarItem(icon: Icon(Icons.check_box), label: 'TODO'),
         ],
       ),
     );
